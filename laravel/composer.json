@@ -1,0 +1,91 @@
+{
+    "name": "misfits/stellarmisfits",
+    "description": "Simple stellar.toml file hosting",
+    "keywords": ["stellar", "toml"],
+    "license": "MIT",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/MatanYadaev/jwt-auth"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/misfits/stellar-api"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/misfits/reserved-subdomains"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "dyrynda/laravel-model-uuid": "^5.0",
+        "fideloper/proxy": "^4.0",
+        "laravel/dusk": "^5.1",
+        "laravel/framework": "^6.0",
+        "laravel/helpers": "^1.1",
+        "laravel/socialite": "^4.0",
+        "laravel/tinker": "^1.0",
+        "laravel/vapor-core": "^1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "nkkollaw/reserved-subdomains": "dev-master",
+        "propaganistas/laravel-phone": "^4.2",
+        "spatie/laravel-cors": "^1.6",
+        "spatie/laravel-medialibrary": "^7.0.0",
+        "spatie/regex": "^1.4",
+        "tymon/jwt-auth": "dev-feature/laravel-6-support",
+        "yosymfony/toml": "^1.0",
+        "zulucrypto/stellar-api": "dev-master"
+    },
+    "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.0",
+        "doctrine/dbal": "^2.9",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^7.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+              "laravel/dusk"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php artisan jwt:secret --force --ansi"
+        ]
+    }
+}

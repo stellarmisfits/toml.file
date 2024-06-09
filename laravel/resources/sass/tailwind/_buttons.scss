@@ -1,0 +1,66 @@
+.btn {
+  @apply px-4 py-2 border text-sm rounded tracking-widest font-semibold uppercase ;
+  &:hover{
+    @apply bg-gray-200;
+  }
+  &:focus{
+    @apply shadow-outline outline-none;
+  }
+  &:disabled{
+    @apply opacity-50;
+  }
+}
+
+.btn-flat{
+  @apply px-4 py-2 text-sm rounded tracking-widest font-semibold uppercase cursor-pointer;
+  &:hover{
+    @apply bg-gray-200;
+  }
+}
+
+.btn-sm {
+  @apply px-2 py-1 text-xs;
+}
+
+.btn-white {
+  @apply border border-gray-300 text-gray-600 bg-white;
+  &:disabled {
+    @apply shadow-inner;
+    &:hover{
+      @apply bg-white;
+    }
+  }
+}
+
+.btn-primary {
+  @apply text-blue-100 bg-blue-800;
+  &:hover {
+    @apply bg-transparent bg-gray-600;
+  }
+}
+
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  color: transparent !important;
+
+  &:after {
+    animation: spinAround 500ms infinite linear;
+    border: 2px solid #dbdbdb;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    left: calc(50% - (1em / 2));
+    top: calc(50% - (1em / 2));
+  }
+}
+
+@keyframes spinAround {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}

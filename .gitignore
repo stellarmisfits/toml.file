@@ -1,0 +1,4 @@
+.fseventsd
+docker/data
+docker/localhost.key
+docker/localhost.crt
